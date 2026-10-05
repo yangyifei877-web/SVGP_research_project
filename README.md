@@ -4,13 +4,27 @@ This repository contains the code, notebooks, simulation summaries, diagnostic f
 
 The central problem is that a standard SVGP can provide an accurate posterior mean while its nominal 95% credible bands under-cover the true latent function. The project studies whether likelihood tempering can repair interval coverage without sacrificing the scalability of the sparse variational approximation.
 
+## Paper and presentation
+
+<p align="center">
+  <a href="paper.pdf"><img src="assets/paper_preview.png" alt="Paper cover" width="45%"></a>
+  &nbsp;&nbsp;
+  <a href="presentation_slides.pdf"><img src="assets/presentation_slides_preview.png" alt="Presentation title slide" width="45%"></a>
+</p>
+
+<p align="center">
+  <strong><a href="paper.pdf">Read the paper</a></strong>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <strong><a href="presentation_slides.pdf">View the presentation slides</a></strong>
+</p>
+
 ## Research question and method
 
 The experiments use the synthetic latent function
 
-\[
+$$
 f_0(x) = \sin(2\pi x) + 0.5\cos(3x), \qquad x \in [-2.5, 2.5].
-\]
+$$
 
 The main workflow is:
 
@@ -49,41 +63,76 @@ Later family-consistent deployment diagnostics are more demanding. Across 100 fu
 
 ![Family-fix final double-check coverage](assets/familyfix_double_check.png)
 
-The newly added `重现/` recalibration run provides an additional end-to-end check. Its 100-replication summary has mean pointwise deployed coverage `0.9404` (minimum `0.70`) even though the calibration-stage estimate averages `0.9958`. This gap is scientifically important: it motivates the later family-identity, cross-fit, transfer-gap, and LCB diagnostics in the repository. Results from different folders reflect successive experiment variants and should not be treated as identical configurations.
+The `reproduction/` recalibration run provides an additional end-to-end check. Its 100-replication summary has mean pointwise deployed coverage `0.9404` (minimum `0.70`) even though the calibration-stage estimate averages `0.9958`. This gap is scientifically important: it motivates the later family-identity, cross-fit, transfer-gap, and LCB diagnostics in the repository. Results from different folders reflect successive experiment variants and should not be treated as identical configurations.
 
 ## Repository contents
 
 | Path | Contents |
 |---|---|
-| [`project_files/Yifei_Yang_project_manuscript.pdf`](project_files/Yifei_Yang_project_manuscript.pdf) | Full manuscript and experiment description |
-| [`project_files/seminar_presentation (5) (1).pdf`](project_files/seminar_presentation%20%285%29%20%281%29.pdf) | Seminar presentation |
+| [`paper.pdf`](paper.pdf) | Full manuscript and experiment description |
+| [`presentation_slides.pdf`](presentation_slides.pdf) | Seminar presentation |
 | [`project_files/svgpstep1/`](project_files/svgpstep1/) | Baseline SVGP and α-grid experiments |
 | [`project_files/calibration/`](project_files/calibration/) | Initial bootstrap-calibration code and checks |
 | [`project_files/two_split/`](project_files/two_split/) | Two-split pointwise calibration experiments |
 | [`project_files/26 spring/with reference/`](project_files/26%20spring/with%20reference/) | Later 15/30-point, cross-fit, family-fix, and LCB experiments |
-| [`project_files/重现/`](project_files/%E9%87%8D%E7%8E%B0/) | Recalibration reproduction scripts and compact per-rep outputs |
+| [`project_files/26 spring/stage1/`](project_files/26%20spring/stage1/) | Additional Stage 1 diagnostics |
+| [`project_files/reproduction/`](project_files/reproduction/) | Recalibration reproduction scripts and compact per-rep outputs |
 | [`project_files/outputs/`](project_files/outputs/) | Baseline aggregate tables and figures |
 | [`assets/`](assets/) | Selected figures displayed in this README |
 
-The snapshot intentionally preserves the original research folder names so paths in notebooks and analysis notes remain recognizable.
+Repository folder and file names have been standardized to English. The broader experiment structure is otherwise preserved so paths remain recognizable.
 
-## Run locally on macOS / VS Code
+## Local setup: macOS, Windows, and VS Code
 
 Python 3.10 or 3.11 is recommended. The original study records PyTorch 2.5.1 and GPyTorch 1.14.
+
+First clone the repository:
 
 ```bash
 git clone https://github.com/yangyifei877-web/SVGP_research_project.git
 cd SVGP_research_project
+```
 
+### macOS or Linux (Terminal)
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-To use VS Code, open the repository with `code .`, then choose `.venv/bin/python` from **Python: Select Interpreter**. Open any `.ipynb` file and select the same environment as the notebook kernel.
+### Windows (PowerShell)
 
-PyTorch will run on CPU on a Mac. The full 100-replication/bootstrap experiments are computationally expensive; begin with one replication and a small bootstrap count.
+```powershell
+py -3.11 -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+If `py -3.11` is unavailable, install Python 3.11 from [python.org](https://www.python.org/downloads/windows/) and enable **Add Python to PATH** during installation.
+
+### Windows (Command Prompt)
+
+```bat
+py -3.11 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### VS Code
+
+Open the repository with `code .`, then run **Python: Select Interpreter** from the Command Palette:
+
+- macOS/Linux: select `.venv/bin/python`.
+- Windows: select `.venv\Scripts\python.exe`.
+
+For a notebook, click the kernel name in the upper-right corner and choose the same interpreter. If VS Code does not detect it, install the official Python and Jupyter extensions and reload the window.
+
+PyTorch will run on CPU on both macOS and Windows. The full 100-replication/bootstrap experiments are computationally expensive; begin with one replication and a small bootstrap count.
 
 ### 1. Small α-grid / calibration run
 
@@ -98,6 +147,18 @@ python "project_files/26 spring/with reference/alpha_grid.py" \
 ```
 
 Increase `--B` and expand the α-grid only after this small run succeeds.
+
+Windows PowerShell equivalent:
+
+```powershell
+New-Item -ItemType Directory -Force runs/alpha-grid-smoke | Out-Null
+python "project_files/26 spring/with reference/alpha_grid.py" `
+  --rep-id 0 `
+  --B 5 `
+  --alphas 1.0,0.8,0.5 `
+  --no-save-pseudo-truth `
+  --out-dir runs/alpha-grid-smoke
+```
 
 ### 2. Family-consistent calibration and deploy
 
@@ -116,15 +177,40 @@ python "project_files/26 spring/with reference/familyfix/svgp_twosplit_bootstrap
 
 For the original-scale experiment, use the script defaults or the parameters recorded in the manuscript and run replications independently.
 
+Windows PowerShell equivalent:
+
+```powershell
+New-Item -ItemType Directory -Force runs/familyfix-rep0 | Out-Null
+python "project_files/26 spring/with reference/familyfix/svgp_twosplit_bootstrap_familyfix_calibbank.py" `
+  --rep-id 0 `
+  --B 10 `
+  --alphas 1.0,0.8,0.6,0.4,0.2 `
+  --selection-rule largest_meeting_target `
+  --stage1-epochs 100 `
+  --stage2-epochs 50 `
+  --batch-size 500 `
+  --out-dir runs/familyfix-rep0
+```
+
 ### 3. Recalibration / double-check reproduction
 
-The script in `重现/` expects a calibration directory containing one subdirectory per replication, such as `rep_0/`, with exactly one `pointwise_coverage_rep*_A*_B*.csv` file inside.
+The script in `reproduction/` expects a calibration directory containing one subdirectory per replication, such as `rep_0/`, with exactly one `pointwise_coverage_rep*_A*_B*.csv` file inside.
 
 ```bash
 mkdir -p runs/recalibration-doublecheck
-python "project_files/重现/alpha_star_doublecheck_per_rep.py" \
+python "project_files/reproduction/alpha_star_doublecheck_per_rep.py" \
   --rep-id 0 \
   --calib-dir /absolute/path/to/calibration/results \
+  --out-dir runs/recalibration-doublecheck
+```
+
+Windows PowerShell equivalent:
+
+```powershell
+New-Item -ItemType Directory -Force runs/recalibration-doublecheck | Out-Null
+python "project_files/reproduction/alpha_star_doublecheck_per_rep.py" `
+  --rep-id 0 `
+  --calib-dir "C:\absolute\path\to\calibration\results" `
   --out-dir runs/recalibration-doublecheck
 ```
 
@@ -138,7 +224,7 @@ For each test location, the script selects the largest α whose estimated covera
 - Several notebooks are exploratory and assume that earlier-stage output files already exist.
 - Aggregate CSV and PNG results are included so the main conclusions can be inspected without rerunning every simulation.
 
-The original folder was approximately 2 GB. This GitHub snapshot includes all source code, notebooks, PDFs, JSON metadata, CSV results, and PNG diagnostics, plus the compact NumPy outputs under `重现/`. It excludes roughly 1.7 GB of `.npz` interval banks, roughly 215 MB of other `.npy` intermediate arrays, notebook checkpoints, duplicate ZIP archives, and macOS metadata. These are generated intermediates rather than the only copies of final reported results.
+The original folder was approximately 2 GB. This GitHub snapshot includes all source code, notebooks, PDFs, JSON metadata, CSV results, and PNG diagnostics, plus the compact NumPy outputs under `reproduction/`. It excludes roughly 1.7 GB of `.npz` interval banks, roughly 215 MB of other `.npy` intermediate arrays, notebook checkpoints, duplicate ZIP archives, and macOS metadata. These are generated intermediates rather than the only copies of final reported results.
 
 ## Limitations
 

@@ -8,5 +8,5 @@ runs/
 # Large generated simulation intermediates
 *.npz
 *.npy
-!project_files/重现/**/*.npy
+!project_files/reproduction/**/*.npy
 *.zip
