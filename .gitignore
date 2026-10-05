@@ -1,0 +1,12 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+runs/
+
+# Large generated simulation intermediates
+*.npz
+*.npy
+!project_files/重现/**/*.npy
+*.zip

@@ -1,0 +1,7 @@
+strategy,undercovered_points,min_pointwise_coverage,worst_x,q10_pointwise_coverage,mean_pointwise_coverage
+filtered_lcb_proxy__lam_0.500__tau_0.020,3,0.93,-2.193877551020408,0.97,0.9926
+filtered_lcb_proxy__lam_1.000__tau_0.020,3,0.92,-1.8877551020408163,0.97,0.9922000000000001
+filtered_lcb_proxy__lam_2.000__tau_0.020,3,0.91,-2.193877551020408,0.97,0.9915999999999999
+filtered_lcb_proxy__lam_3.000__tau_0.020,3,0.9,-2.193877551020408,0.97,0.9914000000000001
+lcb_direction,5,0.92,-1.5816326530612246,0.949,0.9856
+baseline_replay,7,0.92,-2.193877551020408,0.94,0.9834000000000002

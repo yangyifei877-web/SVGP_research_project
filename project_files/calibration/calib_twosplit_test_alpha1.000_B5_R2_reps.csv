@@ -1,0 +1,3 @@
+alpha,B,rep,rep_seed,mean_coverage_mu,min_coverage_mu,mean_bandwidth,mean_coverage_true,min_coverage_true
+1.0,5,0,2025,0.8919999999999999,0.2,0.03250066605610232,0.9880000000000001,0.8
+1.0,5,1,2026,0.992,0.6,0.03166178064102039,1.0,1.0

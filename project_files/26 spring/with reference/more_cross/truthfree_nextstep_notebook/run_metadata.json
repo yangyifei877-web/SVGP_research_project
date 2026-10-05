@@ -1,0 +1,26 @@
+{
+  "root": "C:\\Users\\yangy\\26 spring\\with reference\\more_cross",
+  "out_dir": "C:\\Users\\yangy\\26 spring\\with reference\\more_cross\\truthfree_nextstep_notebook",
+  "strategies": [
+    "baseline_replay",
+    "lcb_direction",
+    "proxy_corrected",
+    "smooth_proxy_dp"
+  ],
+  "nominal": 0.95,
+  "params": {
+    "LCB_DELTA": 0.05,
+    "PROXY_LAMBDA": 1.0,
+    "PROXY_TAU": null,
+    "ROBUST_Q": 0.2,
+    "SMOOTH_PROXY_LAMBDA": 1.0,
+    "SMOOTH_PENALTY": 0.2,
+    "SMOOTH_INSTABILITY_PENALTY": 0.0,
+    "FALLBACK": "closest"
+  },
+  "notes": [
+    "Selection is truth-free.",
+    "true_f / offline_hit are used only for offline evaluation if present.",
+    "This notebook does not retrain SVGP and does not rerun the formal experiment."
+  ]
+}

@@ -1,0 +1,2 @@
+strategy,num_reps,mean_alpha_star,mean_calib_cov_cf,mean_dep_cov_pseudo,mean_g_pseudo,mean_width_ratio,mean_center_shift,mean_scale_shift,mean_dir_sd,offline_mean_coverage,offline_min_pointwise_coverage,offline_undercovered_points_nominal_095
+proxy_corrected,100,0.9039400000000002,0.9820700000000001,0.9995599999999999,0.017489999999999978,0.6953196848311749,0.22448115138303829,-0.36655172660730406,0.02379866264764385,0.9916,0.91,3

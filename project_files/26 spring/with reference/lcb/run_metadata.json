@@ -1,0 +1,29 @@
+{
+  "root": "/scratch/yy101/15_points_crossfit_formal/results/results",
+  "out_dir": "/scratch/yy101/15_points_crossfit_truthfree_filtered_lcb/results",
+  "nominal": 0.95,
+  "strategies": [
+    "baseline_replay",
+    "lcb_direction",
+    "filtered_lcb_proxy__lam_0.500__tau_0.020",
+    "filtered_lcb_proxy__lam_1.000__tau_0.020",
+    "filtered_lcb_proxy__lam_2.000__tau_0.020",
+    "filtered_lcb_proxy__lam_3.000__tau_0.020"
+  ],
+  "notes": [
+    "Selection is truth-free.",
+    "Pointwise coverage is the primary evaluation target.",
+    "Offline true_f / offline_hit are used only after selection for evaluation."
+  ],
+  "params": {
+    "lcb_delta": 0.05,
+    "proxy_lambdas": [
+      0.5,
+      1.0,
+      2.0,
+      3.0
+    ],
+    "proxy_tau": 0.02,
+    "fallback": "closest"
+  }
+}

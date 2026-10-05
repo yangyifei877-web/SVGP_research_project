@@ -1,0 +1,2 @@
+strategy,num_reps,mean_alpha_star,mean_calib_cov_cf,mean_dep_cov_pseudo,mean_g_pseudo,mean_width_ratio,mean_center_shift,mean_scale_shift,mean_dir_sd,offline_mean_coverage,offline_min_pointwise_coverage,offline_undercovered_points_nominal_095
+baseline_replay,100,0.9314,0.9814130000000001,0.97406,-0.00735300000000002,0.6896577091734867,0.23166355828138285,-0.3742457264282543,0.02713053465873171,0.9834,0.92,7

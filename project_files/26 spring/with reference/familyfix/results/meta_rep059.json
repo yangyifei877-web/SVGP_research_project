@@ -1,0 +1,41 @@
+{
+  "rep_id": 59,
+  "pool_seed": 13,
+  "split_seed": 72,
+  "n_train": 500,
+  "n_test": 50,
+  "B": 100,
+  "A": 10,
+  "alphas": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "alpha_grid_note": "10 equally spaced practical points on (0,1], implemented as np.linspace(0.1,1.0,10)",
+  "ci_level": 0.95,
+  "z_ci": 1.959963984540054,
+  "selection_rule": "largest_meeting_target",
+  "family_identity_fix": "each split2 bootstrap resample has its own Stage-1 fit, then Stage-2 on the same resample",
+  "deployment": "full-data Stage-1 base once + full-data Stage-2 per alpha; recombine pointwise by alpha_star(x)",
+  "normalization": "x raw->[-1,1] via minmax; y standardized on full train pool; latent-f intervals de-standardized to raw y",
+  "device": "cpu",
+  "dtype": "torch.float64",
+  "use_ciq": false,
+  "avg_final_hit": 0.88,
+  "unique_alpha_star": [
+    0.3,
+    0.4,
+    0.5,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ]
+}

@@ -1,0 +1,2 @@
+strategy,num_reps,mean_alpha_star,mean_calib_cov_cf,mean_dep_cov_pseudo,mean_g_pseudo,mean_width_ratio,mean_center_shift,mean_scale_shift,mean_dir_sd,offline_mean_coverage,offline_mean_pointwise_coverage,offline_min_pointwise_coverage,offline_q10_pointwise_coverage,offline_undercovered_points_nominal_095,offline_worst_x,offline_worst_x_coverage
+filtered_lcb_proxy__lam_0.500__tau_0.020,100,0.87082,0.9859280000000002,0.99954,0.013611999999999975,0.6950578173998397,0.21839353849118953,-0.36664424672262597,0.01893810224909997,0.9926,0.9926,0.93,0.97,3,-2.193877551020408,0.93

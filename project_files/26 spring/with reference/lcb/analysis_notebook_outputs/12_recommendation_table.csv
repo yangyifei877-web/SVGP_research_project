@@ -1,0 +1,7 @@
+strategy,offline_undercovered_points_nominal_095,offline_min_pointwise_coverage,offline_q10_pointwise_coverage,offline_mean_pointwise_coverage,mean_alpha_star,mean_g_pseudo,mean_dir_sd,comment
+filtered_lcb_proxy__lam_0.500__tau_0.020,3,0.93,0.97,0.9926,0.87082,0.0136119999999999,0.0189381022490999,fewest undercovered points; best worst-point coverage
+filtered_lcb_proxy__lam_1.000__tau_0.020,3,0.92,0.97,0.9922,0.8946599999999999,0.0160975999999999,0.0215851005139248,fewest undercovered points
+filtered_lcb_proxy__lam_2.000__tau_0.020,3,0.91,0.97,0.9916,0.90676,0.0180165999999999,0.0241508941053591,fewest undercovered points
+filtered_lcb_proxy__lam_3.000__tau_0.020,3,0.9,0.97,0.9914,0.90936,0.0182259999999999,0.0248079875282596,fewest undercovered points
+lcb_direction,5,0.92,0.949,0.9856,0.87784,-0.0063706,0.018703022460392,lowest direction instability
+baseline_replay,7,0.92,0.94,0.9834000000000002,0.9314,-0.007353,0.0271305346587317,

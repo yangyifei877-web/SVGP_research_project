@@ -1,0 +1,2 @@
+R,J,A,S,B,rep_id_min,rep_id_max,nominal,undercovered_selected_points,recon_all_alpha_curve_match,recon_all_mu_match,recon_all_std_match,recon_all_lower_match,recon_all_upper_match,recon_all_est_match_csv_vs_crossfit,recon_all_est_match_crossfit_vs_calib_bank,recon_all_hit_match
+20,50,10,10,50,0,19,0.95,5,True,True,True,True,True,True,True,True

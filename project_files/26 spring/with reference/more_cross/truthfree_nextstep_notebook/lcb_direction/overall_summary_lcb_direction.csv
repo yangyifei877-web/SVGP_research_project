@@ -1,0 +1,2 @@
+strategy,num_reps,mean_alpha_star,mean_calib_cov_cf,mean_dep_cov_pseudo,mean_g_pseudo,mean_width_ratio,mean_center_shift,mean_scale_shift,mean_dir_sd,offline_mean_coverage,offline_min_pointwise_coverage,offline_undercovered_points_nominal_095
+lcb_direction,100,0.87784,0.9866905999999999,0.9803200000000001,-0.0063706000000000205,0.6913159958043191,0.2228298514782365,-0.37172100381439094,0.018703022460392058,0.9856,0.92,5

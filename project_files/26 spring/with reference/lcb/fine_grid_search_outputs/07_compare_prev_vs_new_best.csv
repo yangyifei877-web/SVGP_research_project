@@ -1,0 +1,3 @@
+source,strategy_or_grid,undercovered,min_pointwise,q10_pointwise,mean_dir_sd
+previous_best,filtered_lcb_proxy__lam_0.500__tau_0.020,3.0,0.93,0.97,0.0189381022490999
+new_fine_grid_best,"lam=0.25, tau=0.03",2.0,0.93,0.97,0.01783120809026359

@@ -1,0 +1,2 @@
+R,J,rep_id_min,rep_id_max,nominal,overall_deploy_mean_hit,rep_mean_hit_mean,rep_mean_hit_sd,overall_selected_est_cov_mean,overall_deploy_minus_est_mean
+100,50,0,99,0.95,0.976,0.9760000000000001,0.06023522912949555,0.9857080000000001,-0.009708000000000161

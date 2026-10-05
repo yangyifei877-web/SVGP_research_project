@@ -1,0 +1,7 @@
+stage,object,saved_artifact,shape_example,depends_on,truth_free,role
+calibration,"pseudo_truth(alpha, x)",pseudo_truth_repXXX_AA_JJ.npy,"(10, 50)",split-1 Stage-1 + Stage-2 family on D1,True,surrogate target used during calibration
+calibration,"estimated pointwise coverage(alpha, x)",pointwise_coverage_repXXX_A*_B*.csv,"(50, 10) after removing x column",split-2 bootstrap with same-family interval generator,True,estimated coverage surface used to choose alpha
+selection,alpha_star(x),alpha_star_curve_repXXX.csv / alpha_star_repXXX_JJ.npy,"(50,)",estimated pointwise coverage only,True,dictionary-selected alpha per test point
+deployment,full-data all-alpha interval bank,deploy_full_by_alpha_repXXX_AA_JJ.npz,"mu/std/lower/upper: (10, 50)",full-data Stage-1 base + full-data Stage-2 for each alpha,True,actual deployed family used for final double check
+deployment,selected deployed interval,deploy_final_repXXX_JJ.csv,"(50,) per column",pointwise lookup from all-alpha deploy bank using alpha_star(x),True,actual final deployed object under the selected alpha rule
+simulation audit only,"actual deployed coverage(alpha, x)",derived from deploy_full_by_alpha + true_f,"(50, 10) after replication averaging",known simulation truth only,False,oracle diagnostic only; not available in real deployment
